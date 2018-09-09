@@ -24,9 +24,4 @@
 /nbdist/
 /.nb-gradle/
 /.mvn/
-src/main/java/com/weylan/blog/common/
-src/main/java/com/weylan/blog/config/
-src/main/java/com/weylan/blog/model/
-src/main/java/com/weylan/blog/service/
-src/main/resources/static/
-src/main/resources/templates/
+
