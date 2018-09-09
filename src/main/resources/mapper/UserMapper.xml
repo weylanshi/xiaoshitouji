@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weylan.blog.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.weylan.blog.model.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_alias" jdbcType="VARCHAR" property="userAlias" />
+    <result column="user_wx" jdbcType="VARCHAR" property="userWx" />
+    <result column="user_essay_count" jdbcType="INTEGER" property="userEssayCount" />
+    <result column="user_photo_count" jdbcType="INTEGER" property="userPhotoCount" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.weylan.blog.model.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_alias" jdbcType="VARCHAR" property="userAlias" />
+    <result column="user_wx" jdbcType="VARCHAR" property="userWx" />
+    <result column="user_essay_count" jdbcType="INTEGER" property="userEssayCount" />
+    <result column="user_photo_count" jdbcType="INTEGER" property="userPhotoCount" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+  </resultMap>
+</mapper>

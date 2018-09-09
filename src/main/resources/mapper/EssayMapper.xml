@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weylan.blog.mapper.EssayMapper" >
+  <resultMap id="BaseResultMap" type="com.weylan.blog.model.entity.Essay" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="essay_title" property="essayTitle" jdbcType="VARCHAR" />
+    <result column="essay_favorite_count" property="essayFavoriteCount" jdbcType="INTEGER" />
+    <result column="essay_footprint_count" property="essayFootprintCount" jdbcType="INTEGER" />
+    <result column="essay_words_count" property="essayWordsCount" jdbcType="INTEGER" />
+    <result column="essay_user_id" property="essayUserId" jdbcType="INTEGER" />
+    <result column="essay_c_time" property="essayCTime" jdbcType="TIMESTAMP" />
+    <result column="essay_m_time" property="essayMTime" jdbcType="TIMESTAMP" />
+    <result column="essay_status" property="essayStatus" jdbcType="INTEGER" />
+    <result column="essay_detial" property="essayDetial" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>
