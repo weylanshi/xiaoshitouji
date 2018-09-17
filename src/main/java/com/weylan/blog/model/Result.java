@@ -1,6 +1,4 @@
-package com.weylan.blog.model.res;
-
-import java.util.HashMap;
+package com.weylan.blog.model;
 
 /**
  * @author shiweinan

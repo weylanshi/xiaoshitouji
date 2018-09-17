@@ -1,4 +1,4 @@
-package com.weylan.blog.model.entity;
+package com.weylan.blog.entity;
 
 import java.util.Date;
 import javax.persistence.*;
@@ -8,7 +8,7 @@ public class Essay {
      * id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "JDBC")
     private Integer id;
 
     /**
@@ -39,7 +39,7 @@ public class Essay {
      * 所属用户id
      */
     @Column(name = "essay_user_id")
-    private Integer essayUserId;
+    private String essayUserId;
 
     /**
      * 创建时间
@@ -160,7 +160,7 @@ public class Essay {
      *
      * @return essay_user_id - 所属用户id
      */
-    public Integer getEssayUserId() {
+    public String getEssayUserId() {
         return essayUserId;
     }
 
@@ -169,7 +169,7 @@ public class Essay {
      *
      * @param essayUserId 所属用户id
      */
-    public void setEssayUserId(Integer essayUserId) {
+    public void setEssayUserId(String essayUserId) {
         this.essayUserId = essayUserId;
     }
 

@@ -1,4 +1,4 @@
-package com.weylan.blog.model.entity;
+package com.weylan.blog.entity;
 
 import javax.persistence.*;
 

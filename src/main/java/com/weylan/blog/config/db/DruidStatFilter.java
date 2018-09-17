@@ -1,4 +1,4 @@
-package com.weylan.blog.config;
+package com.weylan.blog.config.db;
 
 import com.alibaba.druid.support.http.WebStatFilter;
 

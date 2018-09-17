@@ -2,8 +2,8 @@ package com.weylan.blog.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.weylan.blog.mapper.EssayMapper;
-import com.weylan.blog.model.entity.Essay;
-import com.weylan.blog.model.res.Result;
+import com.weylan.blog.entity.Essay;
+import com.weylan.blog.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

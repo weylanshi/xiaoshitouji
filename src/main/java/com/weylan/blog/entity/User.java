@@ -1,4 +1,4 @@
-package com.weylan.blog.model.entity;
+package com.weylan.blog.entity;
 
 import javax.persistence.*;
 
@@ -7,8 +7,8 @@ public class User {
      * id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "select replace(uuid(),'-','')")
+    private String id;
 
     /**
      * 姓名
@@ -35,10 +35,10 @@ public class User {
     private String userAlias;
 
     /**
-     * 微信
+     * 微信openId
      */
-    @Column(name = "user_wx")
-    private String userWx;
+    @Column(name = "user_wx_open_id")
+    private String userWxOpenId;
 
     /**
      * 文章统计
@@ -59,11 +59,31 @@ public class User {
     private Integer userStatus;
 
     /**
+     * 性别,1:男 ,2 :女
+     */
+    private Integer gender;
+
+    /**
+     * 城市
+     */
+    private String city;
+
+    /**
+     * 省
+     */
+    private String province;
+
+    /**
+     * 国家
+     */
+    private String contry;
+
+    /**
      * 获取id
      *
      * @return id - id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -72,7 +92,7 @@ public class User {
      *
      * @param id id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -149,21 +169,21 @@ public class User {
     }
 
     /**
-     * 获取微信
+     * 获取微信openId
      *
-     * @return user_wx - 微信
+     * @return user_wx_open_id - 微信openId
      */
-    public String getUserWx() {
-        return userWx;
+    public String getUserWxOpenId() {
+        return userWxOpenId;
     }
 
     /**
-     * 设置微信
+     * 设置微信openId
      *
-     * @param userWx 微信
+     * @param userWxOpenId 微信openId
      */
-    public void setUserWx(String userWx) {
-        this.userWx = userWx;
+    public void setUserWxOpenId(String userWxOpenId) {
+        this.userWxOpenId = userWxOpenId;
     }
 
     /**
@@ -218,5 +238,77 @@ public class User {
      */
     public void setUserStatus(Integer userStatus) {
         this.userStatus = userStatus;
+    }
+
+    /**
+     * 获取性别,1:男 ,2 :女
+     *
+     * @return gender - 性别,1:男 ,2 :女
+     */
+    public Integer getGender() {
+        return gender;
+    }
+
+    /**
+     * 设置性别,1:男 ,2 :女
+     *
+     * @param gender 性别,1:男 ,2 :女
+     */
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * 获取城市
+     *
+     * @return city - 城市
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * 设置城市
+     *
+     * @param city 城市
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * 获取省
+     *
+     * @return province - 省
+     */
+    public String getProvince() {
+        return province;
+    }
+
+    /**
+     * 设置省
+     *
+     * @param province 省
+     */
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    /**
+     * 获取国家
+     *
+     * @return contry - 国家
+     */
+    public String getContry() {
+        return contry;
+    }
+
+    /**
+     * 设置国家
+     *
+     * @param contry 国家
+     */
+    public void setContry(String contry) {
+        this.contry = contry;
     }
 }
