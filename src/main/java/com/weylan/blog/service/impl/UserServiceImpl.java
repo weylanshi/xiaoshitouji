@@ -1,5 +1,8 @@
 package com.weylan.blog.service.impl;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.weylan.blog.mapper.UserMapper;
 import com.weylan.blog.entity.User;
 import com.weylan.blog.model.user.vo.UserContext;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,21 +25,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private JwtTokenFactory tokenFactory;
 
-    /**
-     * 用户登录方,暂时只支持openId 登录
-     * 有openId 登录,没有注册,再登录
-     */
-    public User userLogin(String openId) {
-        User example = new User();
-        example.setUserWxOpenId(openId);
-        User user = userMapper.selectOne(example);
-        if (user != null) {
-            return user;
-        } else {
-            User newUser = new User();
-            return null;
-        }
+    LoadingCache<String, User> userCache = CacheBuilder.newBuilder()
+            .maximumSize(1000)
+            .refreshAfterWrite(120, TimeUnit.SECONDS)
+            .expireAfterWrite(30, TimeUnit.MINUTES)
+            .build(new CacheLoader<String, User>() {
+                @Override
+                public User load(String userId) throws Exception {
+                    return userMapper.selectByPrimaryKey(userId);
+                }
+            });
 
+    public User getUserById() {
+        return null;
     }
 
 

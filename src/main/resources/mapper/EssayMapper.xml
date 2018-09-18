@@ -5,6 +5,36 @@
     <!--
       WARNING - @mbg.generated
     -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="essay_title" jdbcType="VARCHAR" property="essayTitle" />
+    <result column="essay_favorite_count" jdbcType="INTEGER" property="essayFavoriteCount" />
+    <result column="essay_footprint_count" jdbcType="INTEGER" property="essayFootprintCount" />
+    <result column="essay_words_count" jdbcType="INTEGER" property="essayWordsCount" />
+    <result column="essay_user_id" jdbcType="VARCHAR" property="essayUserId" />
+    <result column="essay_c_time" jdbcType="TIMESTAMP" property="essayCTime" />
+    <result column="essay_m_time" jdbcType="TIMESTAMP" property="essayMTime" />
+    <result column="essay_status" jdbcType="INTEGER" property="essayStatus" />
+    <result column="essay_detial" jdbcType="LONGVARCHAR" property="essayDetial" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.weylan.blog.entity.Essay">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="essay_title" jdbcType="VARCHAR" property="essayTitle" />
+    <result column="essay_favorite_count" jdbcType="INTEGER" property="essayFavoriteCount" />
+    <result column="essay_footprint_count" jdbcType="INTEGER" property="essayFootprintCount" />
+    <result column="essay_words_count" jdbcType="INTEGER" property="essayWordsCount" />
+    <result column="essay_user_id" jdbcType="VARCHAR" property="essayUserId" />
+    <result column="essay_c_time" jdbcType="TIMESTAMP" property="essayCTime" />
+    <result column="essay_m_time" jdbcType="TIMESTAMP" property="essayMTime" />
+    <result column="essay_status" jdbcType="INTEGER" property="essayStatus" />
+    <result column="essay_detial" jdbcType="LONGVARCHAR" property="essayDetial" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.weylan.blog.entity.Essay">
+    <!--
+      WARNING - @mbg.generated
+    -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="essay_title" jdbcType="VARCHAR" property="essayTitle" />
     <result column="essay_favorite_count" jdbcType="INTEGER" property="essayFavoriteCount" />

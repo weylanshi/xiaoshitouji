@@ -12,5 +12,5 @@ public interface EssayService {
      * @param essayId
      * @return
      */
-    Essay getEssayById(Integer essayId);
+    Essay getEssayById(String  essayId);
 }

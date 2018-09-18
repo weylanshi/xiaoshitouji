@@ -20,7 +20,7 @@ public class EssayServiceImpl implements EssayService {
 
 
     @Override
-    public Essay getEssayById(Integer essayId) {
+    public Essay getEssayById(String essayId) {
         Essay essay = essayMapper.selectByPrimaryKey(essayId);
         if (essay == null) {
             return null;
@@ -29,7 +29,7 @@ public class EssayServiceImpl implements EssayService {
         return essay;
     }
 
-    private void asyncUpdateEssayFootPrint(Integer essayId) {
+    private void asyncUpdateEssayFootPrint(String essayId) {
         Essay essay = essayMapper.selectByPrimaryKey(essayId);
         Integer footprintCount = essay.getEssayFootprintCount() + 1;
         essay.setEssayFootprintCount(footprintCount);

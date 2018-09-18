@@ -17,6 +17,6 @@ public class AccessToken implements JwtToken {
 
     @Override
     public String getToken() {
-        return null;
+        return rawToken;
     }
 }

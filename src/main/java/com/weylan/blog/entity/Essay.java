@@ -8,8 +8,8 @@ public class Essay {
      * id
      */
     @Id
-    @GeneratedValue(generator = "JDBC")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "select replace(uuid(),'-','')")
+    private String id;
 
     /**
      * 标题
@@ -70,7 +70,7 @@ public class Essay {
      *
      * @return id - id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -79,7 +79,7 @@ public class Essay {
      *
      * @param id id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

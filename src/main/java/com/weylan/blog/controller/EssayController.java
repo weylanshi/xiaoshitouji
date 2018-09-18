@@ -9,6 +9,7 @@ import com.weylan.blog.entity.User;
 import com.weylan.blog.model.user.res.EssayDetailVo;
 import com.weylan.blog.model.Result;
 import com.weylan.blog.service.EssayService;
+import com.weylan.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,9 @@ public class EssayController {
     @Autowired
     private EssayService essayService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/list")
     public Result listEssays(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
                              @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
@@ -41,8 +45,7 @@ public class EssayController {
     }
 
     @GetMapping("/detail/{essayId}")
-    public Result getEssayDetail(@PathVariable Integer essayId) {
-//        Essay essay = essayMapper.selectByPrimaryKey(essayId);
+    public Result getEssayDetail(@PathVariable String essayId) {
         Essay essay = essayService.getEssayById(essayId);
         String userId = essay.getEssayUserId();
         //todo 加入用户缓存

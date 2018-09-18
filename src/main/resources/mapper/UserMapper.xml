@@ -51,6 +51,24 @@
     <result column="user_photo_count" jdbcType="INTEGER" property="userPhotoCount" />
     <result column="user_status" jdbcType="INTEGER" property="userStatus" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="contry" jdbcType="VARCHAR" property="contry" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.weylan.blog.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_alias" jdbcType="VARCHAR" property="userAlias" />
+    <result column="user_wx_open_id" jdbcType="VARCHAR" property="userWxOpenId" />
+    <result column="user_essay_count" jdbcType="INTEGER" property="userEssayCount" />
+    <result column="user_photo_count" jdbcType="INTEGER" property="userPhotoCount" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
   </resultMap>
   <resultMap id="BaseResultMap" type="com.weylan.blog.entity.User">
     <!--

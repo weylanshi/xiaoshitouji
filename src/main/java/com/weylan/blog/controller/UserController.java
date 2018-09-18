@@ -2,20 +2,18 @@ package com.weylan.blog.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.weylan.blog.common.util.AESUtils;
 import com.weylan.blog.config.GlobalValueSetting;
 import com.weylan.blog.model.user.req.LoginReq;
 import com.weylan.blog.model.Result;
 import com.weylan.blog.service.UserService;
-import com.weylan.blog.common.util.AesUtil;
 import com.weylan.blog.common.util.PooledHttpClient;
+import io.jsonwebtoken.JwtBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import com.weylan.blog.model.user.vo.WxUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Map;
@@ -37,6 +35,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping("/onLogin")
     public Result userLogin(@RequestBody LoginReq loginReq) throws IOException {
         String code = loginReq.getCode();
@@ -51,11 +50,11 @@ public class UserController {
                     + "&grant_type=authorization_code";
             String resStr = pooledHttpClient.get(url);
             JSONObject res = JSON.parseObject(resStr);
-            String sessionKey = res.getString("session_key");
+            String key = res.getString("session_key");
             String encryptedData = loginReq.getEncryptedData();
             String iv = loginReq.getIv();
             try {
-                String result = AesUtil.decrypt(encryptedData, sessionKey, iv, "UTF-8");
+                String result = AESUtils.decrypt(encryptedData, key, iv, "UTF-8");
                 WxUserVo wxUserVo = JSON.parseObject(result, WxUserVo.class);
                 Map<String, Object> loginRes = userService.login(wxUserVo);
                 if (loginRes == null) {
@@ -73,5 +72,9 @@ public class UserController {
         return null;
     }
 
+    public Result getUserInfoByToken(@RequestHeader("s-token") String token){
+
+        return null;
+    }
 
 }
