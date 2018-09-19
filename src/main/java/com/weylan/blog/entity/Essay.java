@@ -8,7 +8,7 @@ public class Essay {
      * id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "select replace(uuid(),'-','')")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select replace(uuid(),'-','')")
     private String id;
 
     /**
@@ -16,6 +16,12 @@ public class Essay {
      */
     @Column(name = "essay_title")
     private String essayTitle;
+
+    /**
+     * 详情简略
+     */
+    @Column(name = "essay_detail")
+    private String essayDetail;
 
     /**
      * 点赞统计
@@ -60,12 +66,6 @@ public class Essay {
     private Integer essayStatus;
 
     /**
-     * 详情
-     */
-    @Column(name = "essay_detial")
-    private String essayDetial;
-
-    /**
      * 获取id
      *
      * @return id - id
@@ -99,6 +99,28 @@ public class Essay {
      */
     public void setEssayTitle(String essayTitle) {
         this.essayTitle = essayTitle;
+    }
+
+    /**
+     * 获取详情简略
+     *
+     * @return essay_detail - 详情简略
+     */
+
+
+    public String getEssayDetail() {
+        return essayDetail;
+    }
+
+    /**
+     * 设置详情简略
+     *
+     * @param essayDetail 详情简略
+     */
+
+
+    public void setEssayDetail(String essayDetail) {
+        this.essayDetail = essayDetail;
     }
 
     /**
@@ -225,23 +247,5 @@ public class Essay {
      */
     public void setEssayStatus(Integer essayStatus) {
         this.essayStatus = essayStatus;
-    }
-
-    /**
-     * 获取详情
-     *
-     * @return essay_detial - 详情
-     */
-    public String getEssayDetial() {
-        return essayDetial;
-    }
-
-    /**
-     * 设置详情
-     *
-     * @param essayDetial 详情
-     */
-    public void setEssayDetial(String essayDetial) {
-        this.essayDetial = essayDetial;
     }
 }

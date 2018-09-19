@@ -27,25 +27,14 @@
         <javaClientGenerator targetPackage="com.weylan.blog.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="user">
+        <table tableName="essay">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--<generatedKey column="id" sqlStatement="select replace(uuid(),'-','')" identity="false" type="pre"/>-->
             <!--oracle 配置-->
             <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
         </table>
-        <table tableName="essay">
-            <!--mysql 配置-->
-            <!--<generatedKey column="id" sqlStatement="JDBC" identity="false" type="pre"/>-->
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--oracle 配置-->
-            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
-        </table>
-        <!--<table tableName="essay_favorite">-->
-            <!--&lt;!&ndash;mysql 配置&ndash;&gt;-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-            <!--&lt;!&ndash;oracle 配置&ndash;&gt;-->
-            <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>&ndash;&gt;-->
-        <!--</table>-->
+
+
     </context>
 </generatorConfiguration>

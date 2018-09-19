@@ -24,10 +24,13 @@ public class EssayDetailVo {
     private Integer essayFootPrint;
     private Integer essayWords;
 
+    /**
+     * 商品详情从essay_detail 中查询插入detail字段
+     */
     public EssayDetailVo(Essay essay, User user) {
         this.essayId = essay.getId();
         this.essayTitle = essay.getEssayTitle();
-        this.essayDetail = essay.getEssayDetial();
+        this.essayDetail = essay.getEssayDetail();
         this.userId = user.getId();
         this.userName = user.getUserName();
         this.userAvatar = user.getUserAvatar();

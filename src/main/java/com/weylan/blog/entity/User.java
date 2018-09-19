@@ -7,7 +7,7 @@ public class User {
      * id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "select replace(uuid(),'-','')")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     /**

@@ -38,7 +38,7 @@ public class BlogApplicationTests {
     public void test1(){
         Essay essay = new Essay();
         essay.setEssayTitle("test");
-        essay.setEssayDetial("--");
+        essay.setEssayDetail("--");
         essay.setEssayUserId(1+"");
         essay.setEssayCTime(new Date());
         essay.setEssayMTime(new Date());

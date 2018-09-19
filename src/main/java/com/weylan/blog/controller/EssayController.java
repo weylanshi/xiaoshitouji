@@ -6,10 +6,12 @@ import com.weylan.blog.mapper.EssayMapper;
 import com.weylan.blog.mapper.UserMapper;
 import com.weylan.blog.entity.Essay;
 import com.weylan.blog.entity.User;
+import com.weylan.blog.model.essay.EssayVo;
 import com.weylan.blog.model.user.res.EssayDetailVo;
 import com.weylan.blog.model.Result;
 import com.weylan.blog.service.EssayService;
 import com.weylan.blog.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/essay")
+@Slf4j
 public class EssayController {
 
     @Autowired
@@ -47,11 +50,25 @@ public class EssayController {
     @GetMapping("/detail/{essayId}")
     public Result getEssayDetail(@PathVariable String essayId) {
         Essay essay = essayService.getEssayById(essayId);
+        if (essay == null) {
+            return new Result<>().error("no such essay ");
+        }
         String userId = essay.getEssayUserId();
         //todo 加入用户缓存
         User user = userMapper.selectByPrimaryKey(userId);
         EssayDetailVo detailVo = new EssayDetailVo(essay, user);
 
         return new Result<>().success(detailVo);
+    }
+
+
+    @PostMapping("/insertEssay")
+    public Result insertEssay(@RequestBody EssayVo essayVo) {
+        try {
+            essayService.insertOrUpdateEssay(essayVo);
+            return new Result<>().success();
+        } catch (Exception e) {
+            return new Result<>().error(e.getMessage());
+        }
     }
 }
