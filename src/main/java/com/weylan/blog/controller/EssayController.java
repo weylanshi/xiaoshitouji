@@ -8,7 +8,7 @@ import com.weylan.blog.entity.Essay;
 import com.weylan.blog.entity.User;
 import com.weylan.blog.model.essay.EssayVo;
 import com.weylan.blog.model.user.res.EssayDetailVo;
-import com.weylan.blog.model.Result;
+import com.weylan.blog.model.Res;
 import com.weylan.blog.service.EssayService;
 import com.weylan.blog.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,37 +38,37 @@ public class EssayController {
     private UserService userService;
 
     @GetMapping("/list")
-    public Result listEssays(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                             @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+    public Res listEssays(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                          @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         //todo 获取列表不需要太多详情,影响列表加载速度,待优化
         List<Essay> essays = essayMapper.selectAll();
         PageInfo<Essay> pageInfo = new PageInfo<>(essays);
-        return new Result<>().success(pageInfo);
+        return new Res<>().success(pageInfo);
     }
 
     @GetMapping("/detail/{essayId}")
-    public Result getEssayDetail(@PathVariable String essayId) {
+    public Res getEssayDetail(@PathVariable String essayId) {
         Essay essay = essayService.getEssayById(essayId);
         if (essay == null) {
-            return new Result<>().error("no such essay ");
+            return new Res<>().error("no such essay ");
         }
         String userId = essay.getEssayUserId();
         //todo 加入用户缓存
         User user = userMapper.selectByPrimaryKey(userId);
         EssayDetailVo detailVo = new EssayDetailVo(essay, user);
 
-        return new Result<>().success(detailVo);
+        return new Res<>().success(detailVo);
     }
 
 
     @PostMapping("/insertEssay")
-    public Result insertEssay(@RequestBody EssayVo essayVo) {
+    public Res insertEssay(@RequestBody EssayVo essayVo) {
         try {
             essayService.insertOrUpdateEssay(essayVo);
-            return new Result<>().success();
+            return new Res<>().success();
         } catch (Exception e) {
-            return new Result<>().error(e.getMessage());
+            return new Res<>().error(e.getMessage());
         }
     }
 }

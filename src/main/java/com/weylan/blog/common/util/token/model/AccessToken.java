@@ -7,16 +7,16 @@ import lombok.Getter;
 @Getter
 public class AccessToken implements JwtToken {
 
-    private String rawToken;
+    private String token;
     @JsonIgnore  private Claims claims;
 
     public AccessToken(String rawToken, Claims claims) {
-        this.rawToken = rawToken;
+        this.token = rawToken;
         this.claims = claims;
     }
 
     @Override
     public String getToken() {
-        return rawToken;
+        return token;
     }
 }

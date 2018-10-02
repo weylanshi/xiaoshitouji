@@ -88,18 +88,18 @@ public class AESUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        String haha = AESUtils.encrypt("haha");
+        String haha = AESUtils.encrypt("xiaoshitouji");
         System.out.println(haha);
-        String encrypt = AESUtils.decrypt(haha,
-                new String(Base64.encodeBase64(defaultKey.getBytes())),
-                new String(Base64.encodeBase64(defaultIv.getBytes())),
-                defaultEncodingFormat);
-        System.out.println(encrypt);
-        //测试微信
-        String key = "bczsh6tNS36Xtk9TrPG/EQ==";
-        String data =  "gIGlrVxyfp90/mhptdRJmsLegNHYNrGHRj2Xr6HogGdpaeVOw70hEHGYh4a98o2m8US8CRziGWAequtzK0GvfI8uaheNzzR2I2uJGkXOqQidv88Vom7AljIk5GfLDnWz4g8ycdvS8O8X/3Lqmdlj6bES42LhAGPj0VIIPCxc3haTGPAk3zSBAiOTkS3F7F2QhYrPxpMXTkL+JdKIumOBpRrN1LUSjpTBk4uBACsBHIQzcs7VdhhqKronnt2e5CEAONIDsOhMqKP6mfTJFAz3W4aueU97qhqGLU+PqhF/YTI1deSQEJ2nHmFtG3fxL+9mxbE8aJKBNcqEXoXYMuMjSouTzfYLRie6OmIJb2rPjZcqkRZ98gRlIKAIJirtunc0HYucZeyDL5ToRYkisfUuxtblQg0CLEtjk/kBODd7vk3rCdiGtK6KNZJxTUAuq+iHp8drI2SLbyT7jBOCKBGWmiNHhp64DRpvslMw2696nqE=";
-        String iv = "tAhXzGp2Dl7IegvLcSsEdA==";
-        String decrypt = AESUtils.decrypt(data, key, iv, "UTF-8");
-        System.out.println(decrypt);
+//        String encrypt = AESUtils.decrypt(haha,
+//                new String(Base64.encodeBase64(defaultKey.getBytes())),
+//                new String(Base64.encodeBase64(defaultIv.getBytes())),
+//                defaultEncodingFormat);
+//        System.out.println(encrypt);
+//        //测试微信
+//        String key = "bczsh6tNS36Xtk9TrPG/EQ==";
+//        String data =  "gIGlrVxyfp90/mhptdRJmsLegNHYNrGHRj2Xr6HogGdpaeVOw70hEHGYh4a98o2m8US8CRziGWAequtzK0GvfI8uaheNzzR2I2uJGkXOqQidv88Vom7AljIk5GfLDnWz4g8ycdvS8O8X/3Lqmdlj6bES42LhAGPj0VIIPCxc3haTGPAk3zSBAiOTkS3F7F2QhYrPxpMXTkL+JdKIumOBpRrN1LUSjpTBk4uBACsBHIQzcs7VdhhqKronnt2e5CEAONIDsOhMqKP6mfTJFAz3W4aueU97qhqGLU+PqhF/YTI1deSQEJ2nHmFtG3fxL+9mxbE8aJKBNcqEXoXYMuMjSouTzfYLRie6OmIJb2rPjZcqkRZ98gRlIKAIJirtunc0HYucZeyDL5ToRYkisfUuxtblQg0CLEtjk/kBODd7vk3rCdiGtK6KNZJxTUAuq+iHp8drI2SLbyT7jBOCKBGWmiNHhp64DRpvslMw2696nqE=";
+//        String iv = "tAhXzGp2Dl7IegvLcSsEdA==";
+//        String decrypt = AESUtils.decrypt(data, key, iv, "UTF-8");
+//        System.out.println(decrypt);
     }
 }

@@ -5,7 +5,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.weylan.blog.mapper.UserMapper;
 import com.weylan.blog.entity.User;
-import com.weylan.blog.model.user.vo.UserContext;
+import com.weylan.blog.model.user.vo.UserContent;
 import com.weylan.blog.model.user.vo.WxUserVo;
 import com.weylan.blog.service.UserService;
 import com.weylan.blog.common.util.token.JwtTokenFactory;
@@ -71,10 +71,10 @@ public class UserServiceImpl implements UserService {
     }
 
     private Map<String, Object> createToken(User user) {
-        UserContext userContext = new UserContext(user);
+        UserContent userContent = new UserContent(user);
         HashMap<String, Object> result = new HashMap<>(2);
-        result.put("token", tokenFactory.createAccessToken(userContext));
-        result.put("refreshToken", tokenFactory.createRefreshToken(userContext));
+        result.put("token", tokenFactory.createAccessToken(userContent));
+        result.put("refreshToken", tokenFactory.createRefreshToken(userContent));
         return result;
     }
 

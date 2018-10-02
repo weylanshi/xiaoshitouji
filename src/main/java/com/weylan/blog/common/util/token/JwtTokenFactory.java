@@ -2,23 +2,21 @@ package com.weylan.blog.common.util.token;
 
 import com.alibaba.fastjson.JSON;
 import com.weylan.blog.config.jwt.JwtSetting;
-import com.weylan.blog.model.user.vo.UserContext;
+import com.weylan.blog.model.user.vo.UserContent;
 import com.weylan.blog.common.util.token.model.AccessToken;
 import com.weylan.blog.common.util.token.model.JwtToken;
 import io.jsonwebtoken.*;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.crypto.spec.SecretKeySpec;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.UUID;
 
 @Component
-public class JwtTokenFactory {
+public class JwtTokenFactory<T> {
 
     private final JwtSetting jwtSetting;
 
@@ -28,14 +26,14 @@ public class JwtTokenFactory {
     }
 
 
-    public AccessToken createAccessToken(UserContext userContext) {
-        if (StringUtils.isBlank(userContext.getUserId())) {
+    public AccessToken createAccessToken(UserContent userContent) {
+        if (StringUtils.isBlank(userContent.getUserId())) {
             throw new IllegalArgumentException("can not create token without userId");
         }
 
 
-        Claims claims = Jwts.claims().setSubject(userContext.getUserId());
-        claims.put("userInfo", JSON.toJSONString(userContext));
+        Claims claims = Jwts.claims().setSubject(userContent.getUserId());
+        claims.put("userInfo", JSON.toJSONString(userContent));
 
         LocalDateTime currentTime = LocalDateTime.now();
 
@@ -52,12 +50,12 @@ public class JwtTokenFactory {
         return new AccessToken(token, claims);
     }
 
-    public JwtToken createRefreshToken(UserContext userContext) {
+    public JwtToken createRefreshToken(UserContent userContent) {
 
-        if (StringUtils.isBlank(userContext.getUserId())) {
+        if (StringUtils.isBlank(userContent.getUserId())) {
             throw new IllegalArgumentException("can not create token without userId");
         }
-        Claims claims = Jwts.claims().setSubject(userContext.getUserId());
+        Claims claims = Jwts.claims().setSubject(userContent.getUserId());
 
         LocalDateTime currentTime = LocalDateTime.now();
 
@@ -80,24 +78,29 @@ public class JwtTokenFactory {
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(jwtSetting.getTokenSigningKey()).parseClaimsJws(token);
         JwsHeader header = claimsJws.getHeader();
         Claims body = claimsJws.getBody();
+        Object userInfo = body.get("userInfo");
+        return userInfo.toString();
+    }
 
-        return body.toString();
+    public T getUserInfoFromToken(String token, Class<T> clazz) {
+        String userInfo = getUserInfoFromToken(token);
+        return JSON.toJavaObject(JSON.parseObject(userInfo), clazz);
     }
 
     public static void main(String[] args) throws InterruptedException {
-        UserContext userContext = new UserContext();
-        userContext.setUserId("2131");
-        userContext.setUserName("weylan");
+        UserContent userContent = new UserContent();
+        userContent.setUserId("2131");
+        userContent.setUserName("weylan");
         JwtSetting setting = new JwtSetting();
-        setting.setTokenExpirationTime(10);
+        setting.setTokenExpirationTime(10000000);
         setting.setRefreshExpirationTime(2);
-        setting.setTokenIssuer("weylan");
-        setting.setTokenSigningKey("1234fasdfaaaaa");
+        setting.setTokenIssuer("http://weypage.com");
+        setting.setTokenSigningKey("2XT2I207n7WphyCiOZCJ2A==");
         JwtTokenFactory tokenFactory = new JwtTokenFactory(setting);
-        AccessToken accessToken = tokenFactory.createAccessToken(userContext);
+        AccessToken accessToken = tokenFactory.createAccessToken(userContent);
         String token = accessToken.getToken();
-        System.out.println(token.length());
-//        Thread.sleep(2000);
+        System.out.println(token);
+        Thread.sleep(2000);
 
         String userInfoFromToken = tokenFactory.getUserInfoFromToken(token);
         System.out.println(userInfoFromToken);

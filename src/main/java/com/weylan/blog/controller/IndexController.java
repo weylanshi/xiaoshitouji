@@ -3,7 +3,7 @@ package com.weylan.blog.controller;
 import com.github.pagehelper.PageHelper;
 import com.weylan.blog.mapper.EssayMapper;
 import com.weylan.blog.entity.Essay;
-import com.weylan.blog.model.Result;
+import com.weylan.blog.model.Res;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +21,9 @@ public class IndexController {
     private EssayMapper essayMapper;
 
     @RequestMapping("")
-    public Result index() {
+    public Res index() {
         PageHelper.startPage(1,1);
         List<Essay> essays = essayMapper.selectAll();
-        return new Result<>().success(essays);
+        return new Res<>().success(essays);
     }
 }

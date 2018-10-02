@@ -8,18 +8,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserContext {
+public class UserContent {
     private String userId;
     private String userName;
-    private String userAvatar;
 
-    public UserContext() {
+    public UserContent() {
     }
 
-    public UserContext(User user) {
+    public UserContent(User user) {
         this.userId = user.getId();
         this.userName = user.getUserName();
-        this.userAvatar = user.getUserAvatar();
-
     }
 }

@@ -1,4 +1,4 @@
-package com.weylan.blog.config;
+package com.weylan.blog.config.value;
 
 import lombok.Getter;
 import lombok.Setter;

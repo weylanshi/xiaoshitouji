@@ -1,7 +1,7 @@
 package com.weylan.blog.common.util;
 
 import com.alibaba.fastjson.JSON;
-import com.weylan.blog.config.HttpConnectionManager;
+import com.weylan.blog.config.http.HttpConnectionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
